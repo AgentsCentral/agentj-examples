@@ -1,2 +1,3 @@
-# agentj-examples
+# AgentJ Examples
+
 AgentJ examples
