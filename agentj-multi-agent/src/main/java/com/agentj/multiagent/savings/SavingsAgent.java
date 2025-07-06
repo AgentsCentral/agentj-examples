@@ -19,7 +19,7 @@ public class SavingsAgent {
     private static final OpenAIConfig config = new OpenAIConfig(1D, System.getenv("OPEN_AI_KEY"));
 
     private static final Handoff handoffToBankingAgent = new Handoff("handoffToBankingAgent",
-            "banking_agent", "Transfer to banking agent for any other inquiries", null);
+            "banking_agent", "Transfer to banking agent for any other inquiries");
 
     private static final ToolBag savingsToolBag = new ToolBag() {
         private final SavingRatesAPI api = new SavingRatesAPI();

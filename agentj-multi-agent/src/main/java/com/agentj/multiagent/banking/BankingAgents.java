@@ -17,10 +17,10 @@ public class BankingAgents {
     private static final OpenAIConfig config = new OpenAIConfig(1D, System.getenv("OPEN_AI_KEY"));
 
     private static final Handoff handoffToSavingsAgent = new Handoff("handoffToSavingsAgent",
-            "savings_agent", "Transfer to savings agent related questions", null);
+            "savings_agent", "Transfer to savings agent related questions");
 
     private static final Handoff handoffToMortgageAgent = new Handoff("handoffToMortgageAgent",
-            "mortgage_agent", "Transfer to mortgage agent for mortgage related inquiries", null);
+            "mortgage_agent", "Transfer to mortgage agent for mortgage related inquiries");
 
     private static final SimpleAgent bankingAgent = new SimpleAgent("banking_agent",
             new Model("gpt-4o", config),
