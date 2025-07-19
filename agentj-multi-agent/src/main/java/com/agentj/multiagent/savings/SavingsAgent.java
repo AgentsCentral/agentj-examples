@@ -1,6 +1,6 @@
 package com.agentj.multiagent.savings;
 
-import ai.agentscentral.core.agent.SimpleAgent;
+import ai.agentscentral.core.agent.Agent;
 import ai.agentscentral.core.annotation.Tool;
 import ai.agentscentral.core.annotation.ToolParam;
 import ai.agentscentral.core.handoff.Handoff;
@@ -12,7 +12,8 @@ import com.agentj.multiagent.savings.api.SavingRatesAPI;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static ai.agentscentral.core.agent.instructions.Instructors.stringInstructor;
+import static ai.agentscentral.core.agent.instructor.Instructors.stringInstructor;
+
 
 public class SavingsAgent {
 
@@ -37,14 +38,14 @@ public class SavingsAgent {
                 - The customer can also provide information in following way, "I have 50K", which means 50000 in savings. Or just "5000" which means 5000 in savings.
                 - For any inquires that are not related to saving rates transfer to banking agent."
             """;
-    private static final SimpleAgent savingsAgent = new SimpleAgent("savings_agent",
+    private static final Agent savingsAgent = new Agent("savings_agent",
             new Model("gpt-4o", config),
             List.of(stringInstructor(SAVING_AGENT_INSTRUCTIONS)),
             List.of(savingsToolBag),
             List.of(handoffToBankingAgent)
     );
 
-    public static SimpleAgent savingAgent() {
+    public static Agent savingAgent() {
         return savingsAgent;
 
     }
