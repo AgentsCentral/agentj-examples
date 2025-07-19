@@ -1,4 +1,4 @@
-package com.agentj.standalone;
+package com.agentj.multiagent;
 
 import ai.agentscentral.http.config.AgentJConfig;
 import ai.agentscentral.http.config.HttpConfig;
@@ -8,18 +8,15 @@ import ai.agentscentral.jetty.runner.JettyHttpRunner;
 import java.util.List;
 
 import static ai.agentscentral.jetty.config.JettyConfig.defaultJettyConfig;
-import static com.agentj.standalone.weather.WeatherSystem.getWeatherSystem;
+import static com.agentj.multiagent.banking.BankingAgents.bankingTeam;
 
-public class StandaloneWeatherAgent {
-
+public class BankingChatBot {
 
     public static void main(String[] args) throws Exception {
 
-        final HttpConfig weatherChatConfig = new HttpConfig("/chat/*", getWeatherSystem());
-        final AgentJConfig agentJConfig = new AgentJConfig(List.of(weatherChatConfig));
+        final HttpConfig bankingChatConfig = new HttpConfig("/chat/*", bankingTeam());
+        final AgentJConfig agentJConfig = new AgentJConfig(List.of(bankingChatConfig));
 
         AgentJStarter.run(new JettyHttpRunner(defaultJettyConfig(), agentJConfig));
     }
-
-
 }

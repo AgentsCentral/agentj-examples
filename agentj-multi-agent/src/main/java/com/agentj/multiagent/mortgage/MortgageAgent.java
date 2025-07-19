@@ -1,6 +1,6 @@
 package com.agentj.multiagent.mortgage;
 
-import ai.agentscentral.core.agent.SimpleAgent;
+import ai.agentscentral.core.agent.Agent;
 import ai.agentscentral.core.annotation.Tool;
 import ai.agentscentral.core.annotation.ToolParam;
 import ai.agentscentral.core.handoff.Handoff;
@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static ai.agentscentral.core.agent.instructions.Instructors.stringInstructor;
+import static ai.agentscentral.core.agent.instructor.Instructors.stringInstructor;
 
 public class MortgageAgent {
 
@@ -36,14 +36,14 @@ public class MortgageAgent {
         }
     };
 
-    private static final SimpleAgent mortgageAgent = new SimpleAgent("mortgage_agent",
+    private static final Agent mortgageAgent = new Agent("mortgage_agent",
             new Model("gpt-4o", config),
             List.of(stringInstructor("You are a mortgage rates assistant. You are responsible for assist users with mortgage rates based on loan to value (LTV). In case of inquiry, ask customer about the property value and loan amount to calculate rates. For inquires other than mortgages, transfer to banking agent.")),
             List.of(mortgageToolBag),
             List.of(handoffToBankingAgent)
     );
 
-    public static SimpleAgent mortgageAgent(){
+    public static Agent mortgageAgent(){
         return mortgageAgent;
     }
 
