@@ -13,7 +13,7 @@ import static ai.agentscentral.core.team.TeamMode.route;
 import static com.agentj.multiagent.mortgage.MortgageAgent.mortgageAgent;
 import static com.agentj.multiagent.savings.SavingsAgent.savingAgent;
 
-public class BankingAgents {
+public class BankingTeam {
 
     private static final OpenAIConfig config = new OpenAIConfig(1D, System.getenv("OPEN_AI_KEY"));
 

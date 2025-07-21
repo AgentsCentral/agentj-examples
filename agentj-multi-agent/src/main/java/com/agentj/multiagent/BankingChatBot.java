@@ -8,7 +8,7 @@ import ai.agentscentral.jetty.runner.JettyHttpRunner;
 import java.util.List;
 
 import static ai.agentscentral.jetty.config.JettyConfig.defaultJettyConfig;
-import static com.agentj.multiagent.banking.BankingAgents.bankingTeam;
+import static com.agentj.multiagent.banking.BankingTeam.bankingTeam;
 
 public class BankingChatBot {
 
