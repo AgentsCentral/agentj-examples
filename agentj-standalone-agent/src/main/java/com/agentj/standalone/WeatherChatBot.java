@@ -16,15 +16,14 @@ public class WeatherChatBot {
 
     public static void main(String[] args) throws Exception {
 
-        final HttpConfig weatherChatConfig = new HttpConfig("/chat/*", WeatherAgent.getAgent(), List.of());
-
         CORSConfig corsConfig = CORSConfig.builder()
                 .allowedOrigins(Set.of("http://localhost:5173"))
                 .allowedHeaders(Set.of("Content-Type", "Authorization"))
                 .allowedMethods(Set.of("GET", "POST"))
                 .allowCredentials(true)
                 .build();
-        final AgentJConfig agentJConfig = new AgentJConfig(List.of(weatherChatConfig), corsConfig);
+        final HttpConfig weatherChatConfig = new HttpConfig("/chat/*", WeatherAgent.getAgent(), List.of(), corsConfig);
+        final AgentJConfig agentJConfig = new AgentJConfig(List.of(weatherChatConfig));
 
         JettyConfig jettyConfig = JettyConfig.defaultConfig();
 
