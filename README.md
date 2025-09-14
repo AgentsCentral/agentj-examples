@@ -31,7 +31,8 @@ AgentJ examples
 
 ### Create a stub weatherAPI 
 Weather API to be used by LLM agent to retrieve current weather information
-```
+
+```java
 public class WeatherAPI {
 
     private final Random temperatureGenerator = new Random();
@@ -54,7 +55,7 @@ public class WeatherAPI {
 ```
 ### Create Weather Agent
 
-```
+```java
 public class WeatherAgent {
 
     private static final OpenAIConfig config = new OpenAIConfig(1D, System.getenv("OPEN_AI_KEY"));
@@ -88,13 +89,13 @@ public class WeatherAgent {
 
 Setup the `WeatherChatBot` to run it using `JettyHttpRunner` . Default port is `8181`
 
-```
+```java
 public class WeatherChatBot {
 
 
     public static void main(String[] args) throws Exception {
 
-        final HttpConfig weatherChatConfig = new HttpConfig("/chat/*", WeatherAgent.getAgent());
+        final HttpConfig weatherChatConfig = new HttpConfig("/chat/*", WeatherAgent.getAgent(), List.of(), null);
         final AgentJConfig agentJConfig = new AgentJConfig(List.of(weatherChatConfig));
 
         AgentJStarter.run(new JettyHttpRunner(defaultJettyConfig(), agentJConfig));
